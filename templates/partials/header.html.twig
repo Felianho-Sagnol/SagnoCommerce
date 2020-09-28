@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">
+            <h2>|<u> Sagno<i class="fa fa-skyatlas in_Sagno" aria-hidden="true"></i>Commerce</u></h2>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" 
+        aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse right" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{path('home')}}">Accueil <span class="sr-only">(current)</span></a>
+            </li>
+            {% if app.user %}
+                {# #}
+            {% else %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{path('user_inscription')}}">Inscription</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{path('user_login')}}">Connexion</a>
+                </li>
+            {% endif %}
+            <li class="nav-item panier active">
+                <a class="nav-link" href="{{path('panier_user')}}">
+                    <i class="fa fa-shopping-cart grand" aria-hidden="true"></i> Panier
+                </a>
+            </li>
+            {% if app.user %}
+                <li class="nav-item dropdown drpdwn active">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" 
+                    aria-haspopup="true" aria-expanded="false">Mon Compte</a>
+                    <div class="dropdown-menu">
+                    <div class='nom'>
+                        <h5>
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>{{ app.user.name}} {{ app.user.firstname}}
+                        </h5>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item a_p " href="{{path('panier_user')}}">
+                        <i class="fa fa-shopping-cart grand" aria-hidden="true"></i> <span></span> Panier
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item a_p" href="{{path('user_profile',{'slug': app.user.slug})}}">
+                        <i class="fa fa-cogs " aria-hidden="true"></i>   Mes Paramètres
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item a_p v" href="{{path('user_logout')}}">
+                        <i class="fa fa-power-off grand" aria-hidden="true"></i>  Déconnexion
+                    </a>
+                    </div>
+                </li>
+            {% endif %}
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action ="#">
+                <input class="form-control mr-sm-2" type="text" placeholder="Chercher un produit">
+                <button class="btn btn-secondary my-2 my-sm-0 text-center" type="submit">
+                    <i class="fa fa-search search" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
+</nav>

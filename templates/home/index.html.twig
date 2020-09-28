@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <div class="container mt-5 felx">
+        <h1 class='f'>{{ name | upper }}<i class="fa fa-star" aria-hidden="true"></i> Bienvenu chez SagnoCommerce</h1>
+        {% if is_granted('ROLE_ADMIN') %}
+            <h1>admin</h1>
+        {% else %}
+            <h2>user</h2>
+        {% endif %}
+    </div>
+{% endblock %}
+

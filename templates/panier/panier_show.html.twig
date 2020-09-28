@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Panier{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        {% if app.user %}
+
+        {% else %}
+            <div class='row'>
+                <div class="col-3"></div>
+                <div class="col-6 mt-3 bg-info pt-2">
+                    <h5 class='text-center'>Bienvenu Sur SagnoCommerce !</h5>
+                    <p>Veillez vous connecté pour pouvoir ajouter des produits au panier !</p>
+                    <a class="nav-link" href="{{path('user_login')}}">Connectez-vous ici !</a>
+                </div>
+                <div class="col-3"></div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
